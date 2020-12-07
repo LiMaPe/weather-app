@@ -13,7 +13,8 @@ const express = require('express')
 const app = express()
 
 //Middleware
-//Sets the body-parse to parsing the URL-encoded data with the querystring library.
+//Require and set the body-parse to parsing the URL-encoded data with the querystring library.
+const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 //Parse application/json
 app.use(bodyParser.json());
@@ -31,3 +32,19 @@ app.use(express.static("website"));
 app.listen(port, () =>
   console.log(`weather-app listening on port ${port}`),
 );
+
+//Add a GET route that returns projectData 
+app.get('/', function (req, res) {
+    //To access GET variable use req.query() and req.params() methods.
+    // Respond projectData object when a GET request is made.
+    res.send(projectData);
+  })
+
+//Add a POST route that adds incoming data to projectData
+app.post('/', function (req, res) {
+    //To access POST variable use req.body() methods.
+    console.log(req.body);
+    projectData.push(req.body);
+  })
+ 
+  console.log(projectData);
