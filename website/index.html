@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Weather App</title>
-<!-- <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet"> -->
-<!-- <link rel="stylesheet" href="style.css"> -->
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
  <body>
-<div id = "app">
-  <div class ="holder headline">
-    Weather Journal App
-  </div>
+  <div class="container">
+    <div class ="header">
+      <h1 class="header__heading"> Are you in sync with the weather?</h1>
+    </div>
 
-  <form id="form__weather">
-    <label for="zip">Enter your zipcode (US only)</label>
-    <input type="text" id="zipcode" placeholder="Enter a US zipcode!">
-    <!-- To group radio buttons they must all have the same name value. This allows only one to be selected at a time and applies required to the whole group. -->
-    <input type="radio" class="radio" name="option" value="sun" required> Warm and sunny!
-    <input type="radio" class="radio" name="option" value="rain" > My heart needs an umrella.
-    <input type="radio" class="radio" name="option" value="cloudy" > A bit grey but that´s okey!
-    <input type="radio" class="radio" name="option" value="thunder" > I might throw a hammer on you.
-    <button id="get__weather" type ="submit"> Get Weather </button>
-  </form>
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
-  </div>
-<script src="app.js" type="text/javascript"></script>
+    <form class="form" id="form__weather">
+      <label for="zip">Enter your zipcode (US only)</label>
+      <input type="text" id="zipcode" placeholder="Enter a US zipcode!">
+      <!-- To group radio buttons they must all have the same name value. This allows only one to be selected at a time and applies required to the whole group. -->
+      <input type="radio" class="radio" name="option" value="sun" required> Warm and sunny!
+      <input type="radio" class="radio" name="option" value="rain" > My heart needs an umrella.
+      <input type="radio" class="radio" name="option" value="cloudy" > A bit grey but that´s okey!
+      <input type="radio" class="radio" name="option" value="thunder" > I might throw a hammer on you.
+      <button class="btn" id="get__weather" type ="submit"> Get Weather </button>
+    </form>
+    <div class ="wrapper__respons">
+      <div class = "title">Output</div>
+      <div class="respons">
+        <div id = "date"></div> 
+        <div id = "temp"></div>
+        <div id = "usermood"></div>
+      </div>
+    </div>
+    </div>
+  <script src="app.js" type="text/javascript"></script>
 
 </body>
 </html>

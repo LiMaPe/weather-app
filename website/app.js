@@ -69,8 +69,9 @@ const updateUI = async () => {
     try{
       const allData = await req.json();
       console.log(allData);
-      document.getElementById('date').innerHTML = allData.date;
-      document.getElementById('temp').innerHTML = allData.temp;
+      document.getElementById("date").innerHTML = allData.date;
+      document.getElementById("temp").innerHTML = allData.temp;
+      document.getElementById("usermood").innerHTML = allData.usermood;
     }catch(error){
       console.log("error", error);
     }
@@ -85,12 +86,6 @@ if (regexp.test(zip)) {
         return false;
       }; 
 };
-
-
-// <input type="radio" name="option" value="sun" required> Warm and sunny!
-// <input type="radio" name="option" value="rain" > My heart needs an umrella.
-// <input type="radio" name="option" value="cloudy" > A bit grey but that´s okey!
-// <input type="radio" name="option" value="thunder" > I might throw a hammer on you.
 
 //Get HTML collection of all radio button option
 let radioOptions = document.getElementsByClassName('radio');
