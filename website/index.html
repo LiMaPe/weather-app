@@ -11,15 +11,17 @@
   <div class ="holder headline">
     Weather Journal App
   </div>
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
+
+  <form id="form__weather">
+    <label for="zip">Enter your zipcode (US only)</label>
+    <input type="text" id="zipcode" placeholder="Enter a US zipcode!">
+    <!-- To group radio buttons they must all have the same name value. This allows only one to be selected at a time and applies required to the whole group. -->
+    <input type="radio" class="radio" name="option" value="sun" required> Warm and sunny!
+    <input type="radio" class="radio" name="option" value="rain" > My heart needs an umrella.
+    <input type="radio" class="radio" name="option" value="cloudy" > A bit grey but that´s okey!
+    <input type="radio" class="radio" name="option" value="thunder" > I might throw a hammer on you.
+    <button id="get__weather" type ="submit"> Get Weather </button>
+  </form>
   <div class ="holder entry">
     <div class = "title">Most Recent Entry</div>
    <div id = "entryHolder">

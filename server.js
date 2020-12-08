@@ -13,7 +13,7 @@ const express = require('express')
 const app = express()
 
 //Middleware
-//Require and set the body-parse to parsing the URL-encoded data with the querystring library.
+//Require and set the body-parse to parsing the URL-encoded data with the querystring library. Values can be only strings or arrays.
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 //Parse application/json
@@ -34,17 +34,29 @@ app.listen(port, () =>
 );
 
 //Add a GET route that returns projectData 
-app.get('/', function (req, res) {
+app.get('/mypath', function (req, res) {
     //To access GET variable use req.query() and req.params() methods.
     // Respond projectData object when a GET request is made.
     res.send(projectData);
   })
 
 //Add a POST route that adds incoming data to projectData
-app.post('/', function (req, res) {
-    //To access POST variable use req.body() methods.
-    console.log(req.body);
-    projectData.push(req.body);
-  })
- 
+app.post('/mypath', function (req, res) {
+    //The POST route anticipate receiving three pieces of data from the request body
+  projectData = {
+    date: req.body.date,
+    temp: req.body.temp,
+    usermood: req.body.usermood
+  };
   console.log(projectData);
+  res.send(projectData);
+})
+
+
+
+
+
+ 
+
+
+
