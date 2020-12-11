@@ -167,6 +167,21 @@ input.zip__input::placeholder {
     text-align: justify;
 }
 
+.rain {
+    background-color: #1d627a31;
+}
+
+.cloud {
+    background-color: #275da03f;
+}
+
+.thundercloud {
+    background-color:  #2745522c;
+}
+
+.sunbeam {
+    background-color: #f8f8c32f;
+}
 /* Footer */
 
 .footer {

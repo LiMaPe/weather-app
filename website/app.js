@@ -4,6 +4,8 @@
 let d = new Date();
 let currDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
+const outputArea = document.getElementById("outputarea");
+console.log(output);
 
 //prel api key
 const apiKey = "2428d73cca2d00e54151570f36a1afcc";
@@ -62,6 +64,8 @@ const postWeatherData = async (url = '', data = {})=>{
       }
   }
 
+
+
 //Update UI with the data
 const updateUI = async () => {
     const req = await fetch('/mypath');
@@ -69,6 +73,35 @@ const updateUI = async () => {
       const allData = await req.json();
       console.log("available data at UI update", allData);
       document.getElementById("output").innerHTML = `Todays date is ${allData.date}. <br>In <b>${allData.city}</b> it´s ${allData.temp} °F outside, although  it feels like ${allData.feels} °F. The weather forecast says ${allData.weather} and you are feeling like a ${allData.usermood}.`;
+      if (allData.usermood === "raindrop") {
+        outputArea.classList.remove("sunbeam");
+        outputArea.classList.remove("cloud");
+        outputArea.classList.remove("thundercloud");
+        outputArea.classList.add("rain");
+        console.log("new color rain");
+        return;
+      } else if (allData.usermood === "sunbeam"){
+        outputArea.classList.remove("rain");
+        outputArea.classList.remove("cloud");
+        outputArea.classList.remove("thundercloud");
+        outputArea.classList.add("sunbeam");
+        console.log("new color sun");
+        return;
+      } else if (allData.usermood === "cloud"){
+        outputArea.classList.remove("rain");
+        outputArea.classList.remove("sunbeam");
+        outputArea.classList.remove("thundercloud");
+        outputArea.classList.add("cloud");
+        console.log("new color cloud");
+        return;
+      } else if (allData.usermood === "thundercloud"){
+        outputArea.classList.remove("rain");
+        outputArea.classList.remove("sunbeam");
+        outputArea.classList.remove("cloud");
+        outputArea.classList.add("thundercloud");
+        console.log("new color thundercloud");
+        return;
+      }
     }catch(error){
       console.log("error", error);
     }

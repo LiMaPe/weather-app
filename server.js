@@ -4,9 +4,8 @@ let projectData = {};
 //Require and config dotenv. Config assigns the content of .env file to process.env.
 require("dotenv").config();
 
-//Define the port and API key variables, process.env has the keys and values as defined in the .env file.
+//Define the port variable, process.env has the keys and values as defined in the .env file.
 const port = process.env.PORT
-const apiKey = process.env.APIKEY
 
 //Require express and set up an instance of app
 const express = require('express')
@@ -54,7 +53,6 @@ app.post('/mypath', function (req, res) {
   console.log(projectData);
   res.send(projectData);
 })
-
 
 
 
