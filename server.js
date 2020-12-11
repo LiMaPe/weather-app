@@ -46,6 +46,9 @@ app.post('/mypath', function (req, res) {
   projectData = {
     date: req.body.date,
     temp: req.body.temp,
+    city: req.body.city,
+    weather: req.body.weather,
+    feels: req.body.feels,
     usermood: req.body.usermood
   };
   console.log(projectData);

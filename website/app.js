@@ -24,20 +24,19 @@ form.addEventListener("submit", getWeather);
 function getWeather(e) {
     e.preventDefault();
     //Get zipcode provided by user
-    const zipInput = e.target[0].value;
-    console.log("zipinput:",zipInput);
+    const zipInput = e.target[4].value;
     //Get mood provided by user
     getMood();
-    console.log(userMood);
     //Check if zipcode is valid, if valid get weather data. 
     if(validateZip(zipInput)) {
         weatherData(zipInput, "us")
         .then(data => {
             //makes a POST request to add the API data, as well as data entered by the user.
-            postWeatherData('/mypath', {date: currDate, temp: data.main.temp, usermood: userMood});
+            postWeatherData('/mypath', {date: currDate, temp: data.main.temp, city: data.name, weather: data.weather[0].main, feels: data.main.feels_like, usermood: userMood});
         })
-        .then(
+        .then( () => {
             updateUI()
+        }    
         );
     } else {
         return alert("Please enter valid US zipcode! If you don´t have one check out the weather in Elmont by entering zipcode: 11003 ");
@@ -48,7 +47,7 @@ function getWeather(e) {
 const postWeatherData = async (url = '', data = {})=>{
       const response = await fetch(url, {
       method: 'POST', //we are accessing the POST route we setup in server.js. 
-      credentials: 'same-origin', // include, *same-origin, omit
+      credentials: 'same-origin', 
       headers: {
           'Content-Type': 'application/json',  //we handle our data with JSON
       },
@@ -56,8 +55,8 @@ const postWeatherData = async (url = '', data = {})=>{
     });
       try {
         const newData = await response.json();
-        console.log(newData);
-        return newData
+        console.log("data added to endpoint", newData);
+        return newData;
       } catch(error) {
       console.log("error", error);
       }
@@ -68,10 +67,8 @@ const updateUI = async () => {
     const req = await fetch('/mypath');
     try{
       const allData = await req.json();
-      console.log(allData);
-      document.getElementById("date").innerHTML = allData.date;
-      document.getElementById("temp").innerHTML = allData.temp;
-      document.getElementById("usermood").innerHTML = allData.usermood;
+      console.log("available data at UI update", allData);
+      document.getElementById("output").innerHTML = `Todays date is ${allData.date}. <br>In <b>${allData.city}</b> it´s ${allData.temp} °F outside, although  it feels like ${allData.feels} °F. The weather forecast says ${allData.weather} and you are feeling like a ${allData.usermood}.`;
     }catch(error){
       console.log("error", error);
     }
@@ -91,7 +88,6 @@ if (regexp.test(zip)) {
 let radioOptions = document.getElementsByClassName('radio');
 // turn it to an array
 radioOptions = Array.from(radioOptions);
-console.log(radioOptions);
 
 //Return the mood of the user as provided in radio buttons
 let userMood;
@@ -103,6 +99,3 @@ function getMood() {
         };
     });
 }
-
-
-
