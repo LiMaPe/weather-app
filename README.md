@@ -21,6 +21,7 @@ o	Check if node is installed by:
 o	Install by: $ npm install node
 -	To install all required dependencies run:
   <br />  $ npm install 
+- Acquire API credentials from OpenWeatherMap website. Insert in app.js line 11. 
 -	To start the local server run: 
   <br /> $ npm start
 
