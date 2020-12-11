@@ -7,8 +7,8 @@ let currDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 const outputArea = document.getElementById("outputarea");
 console.log(output);
 
-//prel api key
-const apiKey = "2428d73cca2d00e54151570f36a1afcc";
+//API KEY
+const apiKey = //ADD YOU API KEY HERE !!! <----- IMPORTANT
 
 
 // The function weaterData will return data about weather in the provided zipcode. 
