@@ -2,7 +2,8 @@
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let currDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let currDate = d.getMonth() + 1 +'.'+ d.getDate()+'.'+ d.getFullYear();
+console.log(currDate);
 
 const outputArea = document.getElementById("outputarea");
 console.log(output);
@@ -13,12 +14,12 @@ const apiKey = //ADD YOU API KEY HERE !!! <----- IMPORTANT
 
 // The function weaterData will return data about weather in the provided zipcode. 
 async function weatherData(zipCode, countryCode) {
-    let respons = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${countryCode}&appid=${apiKey}`);
+    let respons = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${countryCode}&appid=${apiKey}&units=imperial`);
     let data =  await respons.json();
     return data;
 };
 
-//Add eventlistener on #get__weather button to call the function weatherData with user input. 
+//Add eventlistener on #generate button to call the function weatherData with user input. 
 const form = document.getElementById("form__weather");
 
 form.addEventListener("submit", getWeather);
